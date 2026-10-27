@@ -1,0 +1,40 @@
+Private environment settings
+
+.env
+.env.*
+!.env.example
+
+Dependencies
+
+node_modules/
+
+Logs
+
+.log
+npm-debug.log
+
+Temporary media and conversion output
+
+tmp/
+temp/
+downloads/
+*.part
+*.ytdl
+
+Operating system files
+
+.DS_Store
+Thumbs.db
+
+Editor settings
+
+.vscode/
+.idea/
+
+Test and coverage output
+
+coverage/
+
+Build artifacts
+
+dist/
