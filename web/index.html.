@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="A self-hosted media converter for authorized YouTube downloads.">
+  <title>ClipNest — Media Converter</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="ClipNest home">
+      <span class="brand-mark" aria-hidden="true">C</span>
+      <span>ClipNest</span>
+    </a>
+    <a class="header-link" href="/terms.html">Terms of use</a>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">PRIVATE BY DESIGN · SELF-HOSTED</p>
+      <h1>Your media.<br><span>Your format.</span></h1>
+      <p class="hero-copy">
+        Convert eligible videos into MP4 or extract audio as MP3.
+        Use only content you are authorized to download.
+      </p>
+    </section>
+
+    <section class="panel" aria-labelledby="converter-heading">
+      <h2 id="converter-heading">Start a conversion</h2>
+
+      <form id="info-form" novalidate>
+        <label for="video-url">YouTube video link</label>
+        <div class="url-row">
+          <input
+            id="video-url"
+            name="url"
+            type="url"
+            inputmode="url"
+            autocomplete="url"
+            placeholder="https://www.youtube.com/watch?v=..."
+            aria-describedby="url-help"
+            maxlength="2048"
+            required
+          >
+          <button id="paste-button" class="button button-secondary" type="button">
+            Paste
+          </button>
+        </div>
+        <p id="url-help" class="help-text">
+          Supports standard videos and Shorts. Playlists and live streams are not supported.
+        </p>
+        <button id="fetch-button" class="button button-primary full-width" type="submit">
+          Fetch info
+        </button>
+      </form>
+
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+      <article id="preview-card" class="preview-card" hidden>
+        <img id="thumbnail" class="thumbnail" alt="Video thumbnail">
+        <div class="preview-details">
+          <h3 id="video-title"></h3>
+          <p id="video-channel" class="muted"></p>
+          <p id="video-duration" class="muted"></p>
+        </div>
+      </article>
+
+      <form id="conversion-form" hidden>
+        <fieldset class="format-fieldset">
+          <legend>Output format</legend>
+          <div class="format-options">
+            <label class="format-option">
+              <input type="radio" name="format" value="mp4" checked>
+              <span><strong>MP4</strong><small>Video</small></span>
+            </label>
+            <label class="format-option">
+              <input type="radio" name="format" value="mp3">
+              <span><strong>MP3</strong><small>Audio</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div id="quality-group" class="field-group">
+          <label for="quality">Video quality</label>
+          <select id="quality" name="quality">
+            <option value="best">Best available</option>
+            <option value="1080">1080p</option>
+            <option value="720">720p</option>
+            <option value="480">480p</option>
+            <option value="360">360p</option>
+          </select>
+        </div>
+
+        <div id="bitrate-group" class="field-group" hidden>
+          <label for="bitrate">Audio bitrate</label>
+          <select id="bitrate" name="bitrate">
+            <option value="128">128 kbps</option>
+            <option value="192" selected>192 kbps</option>
+            <option value="320">320 kbps</option>
+          </select>
+        </div>
+
+        <label class="consent-row">
+          <input id="rights-check" type="checkbox" required>
+          <span>I have the right to download this content.</span>
+        </label>
+
+        <button id="convert-button" class="button button-primary full-width" type="submit" disabled>
+          Convert media
+        </button>
+      </form>
+
+      <section id="progress-section" class="progress-section" hidden aria-labelledby="progress-heading">
+        <h3 id="progress-heading">Preparing your file</h3>
+        <p id="progress-text" class="muted" aria-live="polite">Waiting for the worker…</p>
+        <div
+          id="progress-track"
+          class="progress-track"
+          role="progressbar"
+          aria-label="Conversion progress"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <p class="help-text">Keep this page open while your file is being prepared.</p>
+      </section>
+
+      <section id="result-section" class="result-section" hidden>
+        <h3>Your file is ready</h3>
+        <p id="result-filename" class="muted"></p>
+        <a id="download-link" class="button button-primary full-width" href="#">
+          Download file
+        </a>
+        <p class="help-text">The file is automatically deleted from the server after 15 minutes.</p>
+        <button id="reset-button" class="button button-secondary full-width" type="button">
+          Convert another video
+        </button>
+      </section>
+    </section>
+
+    <section class="info-section">
+      <h2>Simple. Responsible. Self-hosted.</h2>
+      <div class="info-grid">
+        <article>
+          <h3>Two formats</h3>
+          <p>Choose MP4 video or MP3 audio, with adjustable quality settings.</p>
+        </article>
+        <article>
+          <h3>Temporary files</h3>
+          <p>Generated files are kept temporarily and removed automatically.</p>
+        </article>
+        <article>
+          <h3>Authorized content</h3>
+          <p>Only download content you own or have permission to download.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>ClipNest</span>
+    <a href="/terms.html">Terms and takedown policy</a>
+    <span>Not affiliated with YouTube or Google.</span>
+  </footer>
+</body>
+</html>
