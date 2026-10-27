@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ClipNest terms of use and content takedown policy.">
+  <title>Terms of Use — ClipNest</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="ClipNest home">
+      <span class="brand-mark" aria-hidden="true">C</span>
+      <span>ClipNest</span>
+    </a>
+    <a class="header-link" href="/">Back to converter</a>
+  </header>
+
+  <main class="container terms-content">
+    <p class="eyebrow">CLIPNEST · TERMS</p>
+    <h1>Terms of use</h1>
+    <p>Last updated: October 27, 2026</p>
+
+    <h2>1. Permitted use</h2>
+    <p>
+      Use ClipNest only for content you own, content for which you have explicit
+      permission to download and convert, or content that is lawfully available
+      under a license that permits your intended use, such as an applicable
+      Creative Commons license or public-domain status.
+    </p>
+
+    <h2>2. Your responsibility</h2>
+    <p>
+      You are responsible for verifying your rights, the applicable license,
+      local law, and the terms governing the source content before downloading.
+      A confirmation checkbox is not legal advice and does not establish that
+      you have the necessary rights.
+    </p>
+
+    <h2>3. Restrictions</h2>
+    <p>
+      Do not use ClipNest to infringe copyright, evade DRM, circumvent access
+      controls, bypass age or membership restrictions, or obtain content you
+      are not authorized to access. ClipNest is designed to reject unsupported
+      or restricted videos and does not guarantee that every permitted video
+      will be available for conversion.
+    </p>
+
+    <h2>4. Service limitations</h2>
+    <p>
+      The service may reject requests because of source restrictions, network
+      errors, rate limits, file-size limits, processing limits, or technical
+      incompatibility. Temporary files may be removed automatically. Do not
+      rely on the service for permanent storage.
+    </p>
+
+    <h2>5. No affiliation</h2>
+    <p>
+      ClipNest is an independent project. It is not affiliated with, endorsed
+      by, or sponsored by YouTube or Google. YouTube and Google are trademarks
+      of their respective owners.
+    </p>
+
+    <h2>6. Copyright and takedown requests</h2>
+    <p>
+      If you believe ClipNest is being used to infringe your rights, contact the
+      operator using the takedown email configured by the site administrator.
+      Include the relevant source URL, identify the material and rights
+      concerned, provide a reliable way to contact you, and explain the action
+      requested. Do not send passwords or sensitive identity documents.
+    </p>
+    <p>
+      Contact: <a id="contact-email" href="mailto:">site administrator</a>
+    </p>
+
+    <h2>7. No warranty</h2>
+    <p>
+      ClipNest is provided on an as-is and as-available basis, to the extent
+      permitted by applicable law. The operator makes no guarantee of
+      availability, compatibility, or uninterrupted processing.
+    </p>
+
+    <h2>8. Contact configuration</h2>
+    <p>
+      The site operator must configure a valid takedown contact address through
+      the server environment before making the service publicly accessible.
+      If no address is configured, this page will not display a contact email.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <a href="/">ClipNest home</a>
+    <span>Not affiliated with YouTube or Google.</span>
+  </footer>
+
+  <script>
+    "use strict";
+    (async () => {
+      const base = document.documentElement.dataset.apiBaseUrl || "";
+      try {
+        const response = await fetch(`${base.replace(/\/+$/, "")}/api/public-config`);
+        if (!response.ok) return;
+        const data = await response.json();
+        if (typeof data.contactEmail !== "string" ||
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.contactEmail)) return;
+
+        const link = document.getElementById("contact-email");
+        link.textContent = data.contactEmail;
+        link.href = `mailto:${data.contactEmail}`;
+      } catch {
+        // The contact address is optional; never invent one.
+      }
+    })();
+  </script>
+</body>
+  </html>
