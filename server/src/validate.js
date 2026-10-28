@@ -40,7 +40,7 @@ const isShortLink = hostname === "youtu.be";
 const videoId = isShortLink
 ? parsed.pathname.split("/").filter(Boolean)[0]
 : parsed.searchParams.get("v") ||
-parsed.pathname.match(/^/(?:shorts|embed|live)/([^/]+)/)?.[1];
+parsed.pathname.match(/^\/(?:shorts|embed|live)\/([^/]+)/)?.[1];
 
 if (!videoId || !/^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
 throw new Error("We couldn't find a valid video ID in that link.");
