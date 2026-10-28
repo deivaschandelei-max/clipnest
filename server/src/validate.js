@@ -47,7 +47,7 @@ throw new Error("We couldn't find a valid video ID in that link.");
 }
 
 return {
-url: "https://www.youtube.com/watch?v=${videoId}",
+url: `https://www.youtube.com/watch?v=${videoId}`,
 videoId
 };
 }
