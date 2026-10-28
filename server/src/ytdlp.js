@@ -43,6 +43,8 @@ child.once("close", (code) => {
     reject(new Error("Media processing failed."));
   }
 });
+});
+}
 
 export async function getVideoInfo(url) {
 const { stdout } = await runProcess(config.ytdlpPath, [
