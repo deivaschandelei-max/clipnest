@@ -96,8 +96,7 @@ await fs.mkdir(workDir, { recursive: true, mode: 0o700 });
 
 try {
 const basePath = path.join(workDir, "media");
-const outputTemplate = "${basePath}.%(ext)s";
-
+const outputTemplate = path.join(workDir, "media.%(ext)s");
 const formatArgs = job.format === "mp3"
   ? [
       "-x",
