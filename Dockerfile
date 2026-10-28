@@ -20,6 +20,7 @@ ENV PATH="/opt/yt-dlp/bin:${PATH}"
 WORKDIR /app
 
 COPY . .
+RUN test -f /app/web/index.html
 
 WORKDIR /app/server
 
