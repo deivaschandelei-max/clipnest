@@ -27,7 +27,7 @@ host: process.env.HOST || "0.0.0.0",
 nodeEnv: process.env.NODE_ENV || "development",
 
 // Public URL of the backend, used by separately hosted frontends.
-publicBaseUrl: (process.env.PUBLIC_BASE_URL || "").replace(//+$/, ""),
+publicBaseUrl: (process.env.PUBLIC_BASE_URL || "").replace(/\/+$/, ""),
 contactEmail: process.env.CONTACT_EMAIL || "",
 
 corsOrigins: readOriginList(),
