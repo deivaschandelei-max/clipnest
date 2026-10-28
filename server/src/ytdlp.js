@@ -116,6 +116,8 @@ onProgress({ percent: 5, message: "Preparing media..." });
 
 await runProcess(config.ytdlpPath, [
   "--no-warnings",
+  "--js-runtimes", "deno",
+  "--force-ipv4",
   "--no-playlist",
   "--no-progress",
   "--restrict-filenames",
