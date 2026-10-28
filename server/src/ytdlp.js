@@ -36,12 +36,13 @@ child.once("close", (code) => {
   if (code === 0) {
     resolve({ stdout, stderr });
   } else {
+    console.error(
+      `Media process exited with code ${code}:`,
+      stderr.slice(-4000)
+    );
     reject(new Error("Media processing failed."));
   }
 });
-
-});
-}
 
 export async function getVideoInfo(url) {
 const { stdout } = await runProcess(config.ytdlpPath, [
