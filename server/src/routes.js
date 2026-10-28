@@ -88,6 +88,7 @@ let closed = false;
 const send = ({ event, data, id }) => {
 if (closed) return;
 res.write(`id: ${id}\nevent: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+          };
 
 const unsubscribe = subscribeToJob(job, send);
 
